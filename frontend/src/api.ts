@@ -1,6 +1,6 @@
 import type { HostAction, MemberAction, MessagePage, RoomSession, RoomState, SessionState } from './types'
 
-const baseUrl = (import.meta.env.VITE_API_URL || '').replace(/\/$/, '')
+const baseUrl = (import.meta.env.API_URL || '').replace(/\/$/, '')
 
 export class ApiError extends Error {
   constructor(message: string, public status: number) { super(message) }
