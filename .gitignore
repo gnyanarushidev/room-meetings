@@ -1,0 +1,22 @@
+# Local configuration
+.env
+.env.*
+!.env.example
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+
+# Frontend
+node_modules/
+dist/
+*.tsbuildinfo
+playwright-report/
+test-results/
+
+# Editor / OS
+.DS_Store
+.idea/
