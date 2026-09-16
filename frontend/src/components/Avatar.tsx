@@ -2,8 +2,8 @@ import type { CSSProperties } from 'react'
 import type { Profile } from '../types'
 
 const colors = [
-  ['#7c3aed', '#ffffff'], ['#22d3ee', '#07121e'], ['#fb923c', '#261206'],
-  ['#2563eb', '#ffffff'], ['#ff70b7', '#28122a'], ['#a3e635', '#122006'],
+  ['#352b4d', '#d7c7f5'], ['#263d40', '#b4dcdf'], ['#44352b', '#ebc9ad'],
+  ['#29364f', '#bdcff1'], ['#432d3c', '#ebbed7'], ['#303e2c', '#c6ddb9'],
 ]
 
 export default function Avatar({ user, small = false }: { user: Profile; small?: boolean }) {

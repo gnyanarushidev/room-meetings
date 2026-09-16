@@ -60,7 +60,7 @@ export default function Composer({ roomName, connected, disabledReason, sendMess
       {error && <p className="composer-error" role="alert">{error}</p>}
       <form className={`composer ${kind === 'code' ? 'code-composer' : ''} ${!connected ? 'composer-offline' : ''}`} onSubmit={submit}>
         <textarea ref={textarea} value={draft} maxLength={20000} rows={1} disabled={sending}
-          aria-label={`Message ${roomName}`} placeholder={connected ? (kind === 'code' ? 'Paste code here. Your formatting stays intact…' : `Message ${roomName}…`) : disabledReason}
+          aria-label={`Message ${roomName}`} placeholder={connected ? (kind === 'code' ? 'Paste your code…' : 'Write a message…') : disabledReason}
           onChange={event => { setDraft(event.target.value); sendTyping(Boolean(event.target.value.trim())); resize() }}
           onBlur={() => sendTyping(false)} onKeyDown={keyDown} />
         <div className="composer-toolbar">
@@ -72,17 +72,16 @@ export default function Composer({ roomName, connected, disabledReason, sendMess
                 setDraft(value => value.length + emoji.length <= 20000 ? value + emoji : value); setShowEmoji(false); textarea.current?.focus(); resize()
               }}>{emoji}</button>)}
             </div>}
-          </div><button type="button" className={`code-toggle ${kind === 'code' ? 'selected' : ''}`} aria-label="Code formatting" aria-pressed={kind === 'code'} disabled={sending} onClick={() => setKind(value => value === 'code' ? 'text' : 'code')}><Code2 size={17} /><span>{kind === 'code' ? 'Code' : 'Text / code'}</span></button></div>
+          </div><button type="button" className={`code-toggle ${kind === 'code' ? 'selected' : ''}`} aria-label="Code formatting" aria-pressed={kind === 'code'} disabled={sending} onClick={() => setKind(value => value === 'code' ? 'text' : 'code')}><Code2 size={17} /><span>Code</span></button></div>
           <div className="send-group">
             {draft.length > 18000 && <span className="character-count">{draft.length}/20000</span>}
-            <span className="send-hint">a little hello goes a long way</span>
             <button className="send-button" type="submit" aria-label="Send message" disabled={!connected || !draft.trim() || sending}>
               {sending ? <LoaderCircle size={19} className="spin" /> : <ArrowUp size={21} />}
             </button>
           </div>
         </div>
       </form>
-      <p className="composer-caption"><span><kbd>Enter</kbd> to send <span className="caption-dot">·</span> <kbd>Shift + Enter</kbd> for a new line</span><span>Made for real conversations <span className="caption-spark">✦</span></span></p>
+      <p className="composer-caption"><kbd>Enter</kbd> to send · <kbd>Shift + Enter</kbd> for a new line</p>
     </div>
   )
 }
