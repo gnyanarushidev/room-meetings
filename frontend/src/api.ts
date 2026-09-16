@@ -1,7 +1,7 @@
 import type { HostAction, MemberAction, MessagePage, RoomSession, RoomState, SessionState } from './types'
 
 const baseUrl = (import.meta.env.API_URL || '').replace(/\/$/, '')
-
+console.log(baseUrl)
 export class ApiError extends Error {
   constructor(message: string, public status: number) { super(message) }
 }

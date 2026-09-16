@@ -6,6 +6,9 @@ export default defineConfig(({ mode }) => {
   const target = env.API_PROXY_TARGET || 'http://127.0.0.1:8000'
   return {
     plugins: [react()],
+    define: {
+      'import.meta.env.API_URL': JSON.stringify(env.API_URL || ''),
+    },
     server: {
       port: 5173,
       strictPort: true,
